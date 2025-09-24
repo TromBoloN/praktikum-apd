@@ -24,10 +24,10 @@ Bolean = NIM < rata_rata
 #Print hasil
 print(f"""
 suhu_2 adalah         = {suhu_2}F
-suhu_3 adalah         = {suhu_3}K
+suhu_3 adalah         = {suhu_3}F
 suhu_4 adalah         = {suhu_4}K 
-suhu_5 adalah         = {suhu_5}R
-suhu_1 adalah         = {suhu_1}F
+suhu_5 adalah         = {suhu_5}K
+suhu_1 adalah         = {suhu_1}R
 suhu_6 adalah         = {suhu_6}R
 Jumlah                = {jumlah_suhu}
 Rata-rata             = {rata_rata}
