@@ -29,52 +29,75 @@ while True:
 print(f"\nSelamat Datang {username}\n")
 print(g40)
 
-# Golongan dan Volume Darah
-golonganData = []
-volumeData = []
+#Input golongan dan volume darah
 
-darahValid = ["A", "B", "AB", "O"]
-rhesusValid = ["+", "-"]
+aPos = 0
+aNeg = 0
+bPos = 0
+bNeg = 0
+abPos = 0
+abNeg = 0
+oPos = 0
+oNeg = 0
 
 while True:
     darah = input("\nMasukkan golongan darah (A, B, AB, O): ").strip().upper()
 
     if darah == "":
-        print("Golongan darah tidak boleh kosong!")
+        print("Golongan darah tidak boleh kosong")
         continue
-    elif darah not in darahValid:
-        print("Golongan darah tidak valid!")
-        continue
+    elif darah == "A" or darah == "B" or darah == "AB" or darah == "O":
+        pass  # valid
     else:
-        rhesus = input("Masukkan Rhesus (+ atau -): ").strip()
-        if rhesus == "":
-            print("Rhesus tidak boleh kosong!")
-            continue
-        elif rhesus not in rhesusValid:
-            print("Rhesus tidak valid!")
-            continue
-        else:
-            print(f"Golongan darah Anda: {darah}{rhesus}")
-            
-        
-    print("\n" + g40)
+        print("Golongan darah tidak valid")
+        continue
 
+    rhesus = input("Masukkan Rhesus (+ atau -): ").strip()
+
+    if rhesus == "":
+        print("Rhesus tidak boleh kosong")
+        continue
+    elif rhesus == "+" or rhesus == "-":
+        pass
+    else:
+        print("Rhesus tidak valid")
+        continue
+
+    print(f"Golongan darah Anda: {darah}{rhesus}")
+
+    print("\n" + g40)
     kantongDarahStr = input("\nMasukkan jumlah kantong: ").strip()
 
     if kantongDarahStr == "":
-        print("Jumlah kantong darah tidak boleh kosong!")
+        print("Jumlah kantong darah tidak boleh kosong")
+        continue
+    elif not kantongDarahStr.isdigit():
+        print("Jumlah kantong darah harus berupa angka")
         continue
     else:
         kantongDarah = int(kantongDarahStr)
         if kantongDarah <= 0:
-            print("Jumlah kantong darah harus lebih dari 0!")
+            print("Kantong darah harus lebih dari 0")
             continue
-        else:
-            volumeDarah = kantongDarah * 500
 
+    volumeDarah = kantongDarah * 500
 
-    golonganData.append(darah + rhesus)
-    volumeData.append(volumeDarah)
+    if darah == "A" and rhesus == "+":
+        aPos += volumeDarah
+    elif darah == "A" and rhesus == "-":
+        aNeg += volumeDarah
+    elif darah == "B" and rhesus == "+":
+        bPos += volumeDarah
+    elif darah == "B" and rhesus == "-":
+        bNeg += volumeDarah
+    elif darah == "AB" and rhesus == "+":
+        abPos += volumeDarah
+    elif darah == "AB" and rhesus == "-":
+        abNeg += volumeDarah
+    elif darah == "O" and rhesus == "+":
+        oPos += volumeDarah
+    elif darah == "O" and rhesus == "-":
+        oNeg += volumeDarah
 
     inputLagi = input("Apakah Anda ingin memasukkan data lagi? (Y/T): ").upper()
     if inputLagi == "":
@@ -86,20 +109,27 @@ while True:
         print("Input tidak valid, program akan berhenti.")
         break
 
+#Hasil
+
 print("\n" + g40)
 print("\nData Golongan Darah dan Volume Darah yang Dimasukkan: \n")
 print(g40)
 
-# Print listnya
-golonganList = []
-for i in range(len(golonganData)):
-    gol = golonganData[i]
-    if gol not in golonganList:
-        golonganList.append(gol)
-        total = 0
-        for j in range(len(golonganData)):
-            if golonganData[j] == gol:
-                total += volumeData[j]
-        print(f"Golongan Darah {gol} : {total} ml")
+if aPos > 0:
+    print(f"Golongan Darah A+ : {aPos} ml")
+if aNeg > 0:
+    print(f"Golongan Darah A- : {aNeg} ml")
+if bPos > 0:
+    print(f"Golongan Darah B+ : {bPos} ml")
+if bNeg > 0:
+    print(f"Golongan Darah B- : {bNeg} ml")
+if abPos > 0:
+    print(f"Golongan Darah AB+ : {abPos} ml")
+if abNeg > 0:
+    print(f"Golongan Darah AB- : {abNeg} ml")
+if oPos > 0:
+    print(f"Golongan Darah O+ : {oPos} ml")
+if oNeg > 0:
+    print(f"Golongan Darah O- : {oNeg} ml")
 
-print("="*40)
+print(g40)
