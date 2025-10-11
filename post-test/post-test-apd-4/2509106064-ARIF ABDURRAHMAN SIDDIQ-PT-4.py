@@ -47,7 +47,7 @@ while True:
         print("Golongan darah tidak boleh kosong")
         continue
     elif darah == "A" or darah == "B" or darah == "AB" or darah == "O":
-        pass  # valid
+        pass 
     else:
         print("Golongan darah tidak valid")
         continue
@@ -100,6 +100,7 @@ while True:
         oNeg += volumeDarah
 
     inputLagi = input("Apakah Anda ingin memasukkan data lagi? (Y/T): ").upper()
+    print(g40)
     if inputLagi == "":
         print("Input tidak boleh kosong, program akan berhenti.")
         break
@@ -109,7 +110,7 @@ while True:
         print("Input tidak valid, program akan berhenti.")
         break
 
-#Hasil
+#Print Hasil
 
 print("\n" + g40)
 print("\nData Golongan Darah dan Volume Darah yang Dimasukkan: \n")
