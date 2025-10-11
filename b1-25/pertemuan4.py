@@ -1,43 +1,43 @@
-# ulangi = 10
-# for a in range(ulangi):
-#     print(f"Hello World ke {a}")
+ulangi = 10
+for a in range(ulangi):
+    print(f"Hello World ke {a}")
     
-# simpan = [1, 'Dapupu', 4.00, True]
-# for i in simpan:
-#     print(i)
+simpan = [1, 'Dapupu', 4.00, True]
+for i in simpan:
+    print(i)
     
-# for i in range(1, 10):
-#     for j in range(1, 11):
-#         print(f'{i} x {j} = {i * j}')
-# print('') 
+for i in range(1, 10):
+    for j in range(1, 11):
+        print(f'{i} x {j} = {i * j}')
+print('') 
 
-# tanya = 'y'
-# hitung = 0
-# while(tanya == 'y'):
-#     hitung += 1
-#     tanya = input("Ulang lagi? (y/n) ")
-# print(f"Total perulangan: {hitung}")
+tanya = 'y'
+hitung = 0
+while(tanya == 'y'):
+    hitung += 1
+    tanya = input("Ulang lagi? (y/n) ")
+print(f"Total perulangan: {hitung}")
 
-# angka = 84
-# print("Mencari angka pertama yang lebih besar dari 10...")
-# for n in range(angka):
-#     print(f"Sekarang memeriksa angka: {n}")
-#     if n > 10:
-#         print(f"Angka {n} lebih besar dari 10, Perulangan berhenti.")
-#         break
-# print("Program selesai.")
+angka = 84
+print("Mencari angka pertama yang lebih besar dari 10...")
+for n in range(angka):
+    print(f"Sekarang memeriksa angka: {n}")
+    if n > 10:
+        print(f"Angka {n} lebih besar dari 10, Perulangan berhenti.")
+        break
+print("Program selesai.")
 
-# for i in range(10):
-#     for j in range(i):
-#         print(i , end='')
-#     print(' =', i * i)
-# print("")
+for i in range(10):
+    for j in range(i):
+        print(i , end='')
+    print(' =', i * i)
+print("")
 
-# for i in range(10):
-#     for j in range(i):
-#         print(i , end=' ')
-#     print(' =', i * i)
-# print("")
+for i in range(10):
+    for j in range(i):
+        print(i , end=' ')
+    print(' =', i * i)
+print("")
 
 n = 10
 
