@@ -15,7 +15,7 @@ dataMod = [
 
 # Loop Login
 while True:
-    os.system('cls' if os.name == 'nt' else 'clear')
+    os.system('cls')
     print("=== List Mod Victoria 3 ===")
     print("1. Login")
     print("2. Register")
@@ -79,10 +79,6 @@ while True:
                     os.system('cls')
                     print("=== DAFTAR MOD ===")
 
-                    if len(dataMod) == 0:
-                        input("\nBelum ada mod yang ditambahkan. Tekan Enter untuk kembali...")
-                        continue
-
                     tabel = PrettyTable()
                     tabel.field_names = ["No", "Nama Mod", "Pembuat", "Update Terakhir", "Versi Kompatibel", "Kompatibilitas"]
 
@@ -96,9 +92,6 @@ while True:
                 # Update mod
                 elif menuMod == "3":
                     os.system('cls')
-                    if len(dataMod) == 0:
-                        input("\nBelum ada mod yang ditambahkan. Tekan Enter untuk kembali...")
-                        continue
                     
                     tabel = PrettyTable()
                     tabel.field_names = ["No", "Nama Mod", "Pembuat", "Update Terakhir", "Versi Kompatibel", "Kompatibilitas"]
@@ -147,9 +140,6 @@ while True:
                 # Delete mod
                 elif menuMod == "4":
                     os.system('cls')
-                    if len(dataMod) == 0:
-                        input("Belum ada mod yang ditambahkan. Tekan Enter untuk kembali...")
-                        continue
                     
                     tabel = PrettyTable()
                     tabel.field_names = ["No", "Nama Mod", "Pembuat", "Update Terakhir", "Versi Kompatibel", "Kompatibilitas"]
@@ -187,10 +177,6 @@ while True:
                 if menuUser == "1":
                     os.system('cls')
                     print("=== DAFTAR MOD ===")
-
-                    if len(dataMod) == 0:
-                        input("\nBelum ada mod yang ditambahkan. Tekan Enter untuk kembali...")
-                        continue
 
                     tabel = PrettyTable()
                     tabel.field_names = ["No", "Nama Mod", "Pembuat", "Update Terakhir", "Versi Kompatibel", "Kompatibilitas"]
