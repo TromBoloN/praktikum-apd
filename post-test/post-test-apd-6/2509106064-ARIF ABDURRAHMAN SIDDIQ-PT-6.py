@@ -31,11 +31,68 @@ dataMod = {
     }
 }
 
+templateData = {
+    "users": ["username","password","role"],
+    "dataMod" : ["nama","pembuat","update","versi","kompatibilitas"]
+}
+
+# Function nambah data yang abstrak dikit
+def insertTemplateData(targetDict, tipeData):
+    if tipeData not in templateData:
+        print("Tipe Data tidak Dikenal")
+        return
+
+    dataBaru = {}
+    for i in templateData[tipeData]:
+        if i == "update":
+            prompt = f"Masukkan {i} (YYYY-MM-DD): "
+        elif i == "kompatibilitas":
+            prompt = f"Masukkan {i} (Y/T): "
+        elif i == "role":
+            prompt = f"Masukkan {i} (admin/user): "
+        else:
+            prompt = f"Masukkan {i}: "
+        
+        value = input(prompt)
+
+        if i == "kompatibilitas":
+            if value.upper() == "Y":
+                value = "Kompatibel"
+            elif value.upper() == "T":
+                value = "Tidak Kompatibel"
+            else:
+                print("Input tidak valid, default: Tidak Kompatibel")
+                value = "Tidak Kompatibel"
+
+        dataBaru[i] = value
+
+    if tipeData == "dataMod":
+        idBaru = max(targetDict.keys(), default=0) + 1
+        targetDict[idBaru] = dataBaru
+        print("\nMod berhasil ditambahkan!")
+
+    elif tipeData == "users":
+        username = dataBaru["username"]
+        if username in targetDict:
+            print("\nUsername sudah terdaftar.")
+            return
+        targetDict[username] = {
+            "password": dataBaru["password"],
+            "role": dataBaru["role"]
+        }
+        print("\nUser berhasil diregistrasi!")
+
+    print("\nData Hasil Input:")
+    for key, value in dataBaru.items():
+        print(f"{key}: {value}")
+
+
+
 while True:
     os.system('cls')
     print("=== List Mod Victoria 3 ===")
-    print("1. Login")
     print("2. Register")
+    print("1. Login Admin")
     print("3. Keluar")
     menuLogin = input("Pilih menu: ")
 
@@ -66,30 +123,8 @@ while True:
                 menuMod = input("Pilih menu: ")
 
                 if menuMod == "1":
-                    nama = input("\nNama Mod: ")
-                    pembuat = input("Pembuat Mod: ")
-                    updateTerakhir = input("Update Terakhir (YYYY-MM-DD): ")
-                    versiKompatibel = input("Versi Kompatibel: ")
-                    kompatibilitas = input("Kompatibilitas (Y/T): ").upper()
-
-                    if kompatibilitas == "Y":
-                        kompatibilitas = "Kompatibel"
-                    elif kompatibilitas == "T":
-                        kompatibilitas = "Tidak Kompatibel"
-                    else:
-                        input("\nInput tidak valid. Tekan Enter...")
-                        continue
-
-                    next_id = max(dataMod.keys(), default=0) + 1
-                    dataMod[next_id] = {
-                        "nama": nama,
-                        "pembuat": pembuat,
-                        "update": updateTerakhir,
-                        "versi": versiKompatibel,
-                        "kompatibilitas": kompatibilitas
-                    }
-
-                    input("\nMod berhasil ditambahkan! Tekan Enter...")
+                    insertTemplateData(dataMod, "dataMod")
+                    input("\nTekan Enter untuk lanjut...")
 
                 elif menuMod == "2":
                     os.system('cls')
@@ -186,24 +221,8 @@ while True:
                     input("Menu tidak valid. Tekan Enter...")
 
     elif menuLogin == "2":
-        os.system('cls')
-        usernameBaru = input("Masukkan username baru: ")
-        passwordBaru = input("Masukkan password baru: ")
-        roleBaru = input("Masukkan role (admin/user): ").lower()
-
-        if usernameBaru == "" or passwordBaru == "":
-            input("Username atau Password tidak boleh kosong. Tekan Enter...")
-            continue
-
-        if usernameBaru in users:
-            input("Username sudah terdaftar. Tekan Enter...")
-            continue
-        if roleBaru not in ["admin", "user"]:
-            input("Role tidak valid. Tekan Enter...")
-            continue
-
-        users[usernameBaru] = {"password": passwordBaru, "role": roleBaru}
-        input("Registrasi berhasil! Tekan Enter...")
+        insertTemplateData(users, "users")
+        input("\nTekan Enter untuk lanjut...")
 
     elif menuLogin == "3":
         os.system('cls')
