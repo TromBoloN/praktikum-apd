@@ -167,6 +167,9 @@ while True:
 
     if menuLogin == "1":
         role = login()
+        if not role:
+            input("Role Tidak Valid. Tekan Enter...")
+            continue
 
         while True:
             os.system('cls')
@@ -219,6 +222,9 @@ while True:
                
     elif menuLogin == "2":
             role = login()
+            if not role:
+                input("Role Tidak Valid. Tekan Enter...")
+                continue
             while True:
                 os.system('cls')
                 if role == "user":
